@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOP Course Form Project</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/darkly/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="container  courseForm-container">
+        <div class="text-center p-2 bg-primary header">
+            <i class="fas fa-book-open mr-2"></i>
+            <span>Student Course Registry</span>
+        </div>
+        <form class="form p-2 bg-light mb-2" id="form">
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="my-addon">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <input class="form-control " id="studentInput" type="text" name="" placeholder="Student Name" aria-label="Recipient's " aria-describedby="my-addon">
+            </div>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="my-addon">
+                        <i class="fa fa-book" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <select name="" class="form-control" id="subjectInput">
+                    <option value="" disabled selected>Subjects</option>
+                    <option value="">English</option>
+                    <option value="">Mathematics</option>
+                    <option value="">Physics</option>
+                    <option value="">Biology</option>
+                    <option value="">Chemistry</option>
+                    <option value="">Agricultural Science</option>
+                    <option value="">Civic Education</option>
+                    <option value="">Religious Studies</option>
+                </select>
+            </div>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="my-addon">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                    </span>
+                </div>
+               <select name="" id="gradeInput" class="form-control">
+                <option value="" disabled selected>Grade</option>
+                   <option value="">A1</option>
+                   <option value="">B2</option>
+                   <option value="">B3</option>
+                   <option value="">C4</option>
+                   <option value="">C5</option>
+                   <option value="">C6</option>
+                   <option value="">D7</option>
+                   <option value="">E8</option>
+                   <option value="">F9</option>
+               </select>
+            </div>
+            <button type="submit" id="submit" class="btn btn-dark d-block w-100">Register</button>
+        </form>
+        <table class="table text-center table-striped ">
+            <thead class="bg-primary text-uppercase">
+                <tr>
+                    <th>Student</th>
+                    <th>Subjects</th>
+                    <th>Grade</th>
+                    <th></th>
+                </tr>
+            </thead>
+            
+            <tbody class="table-list" id='table-list'>
+                <!-- <tr class="mb-2">
+                    <td>Shallom</td>
+                    <td>English</td>
+                    <td>A1</td>
+                    <td></td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+    <script src="./script.js"></script>
+    </body>
+</html>
