@@ -26,9 +26,10 @@ class UI {
       <td>${stud.student}</td>
       <td>${stud.subject}</td>
       <td>${stud.grade}</td>
-      <td> <a href='#' id='${date()}' class='removeLink'><i class="fa text-danger fa-trash" aria-hidden="true"></i></a> </td>
+      <td> <a href='#' id='${stud.id}' class='removeLink'><i class="fa text-danger fa-trash" aria-hidden="true"></i></a> </td>
     `;
     tableList.appendChild(tableRow);
+    console.log(stud.id);
   }
 
   static displayStudent(){
@@ -46,14 +47,15 @@ class UI {
       tableList.removeChild(remstudent);
 
       let getStored = JSON.parse(localStorage.getItem('students'));
-      console.log(remstudent.children[3].children[0].id)
+      let newStored = getStored.filter(item => item.id != remStudId)
+      localStorage.setItem('students', JSON.stringify(newStored))
     }
   }
-  // static clearFormField(){
-  //   student.value='';
-  //   subject= subject.options[0]
-  //   grade = grade.options[0]
-  // }
+  static clearFormField(){
+    student.value='';
+    subject= subject.options[0]
+    grade = grade.options[0]
+  }
 
   static showAlertBox(msg,color,emoji){
     let div = document.createElement('div');
@@ -64,11 +66,10 @@ class UI {
     container.insertBefore(div,form)
     setTimeout(() => {
       container.removeChild(div);
+      
     },2000)
-    // UI.clearFormField()
   }
 }
-// console.log(document.querySelector('.removeLink').id)
 
 //Storage Class : Controls Local Storage And All
 class Storage {
@@ -96,7 +97,8 @@ form.addEventListener('submit' , e => {
     UI.showAlertBox('Please Enter All Fields Correctly','danger','&#128394');
   }else{
     //Instantiate A new Student Register From the Students Class
-    let studId = date();
+    let studId = Date.now();
+    console.log(studId);
     let newStudent = new Student(stud , subj , gra , studId);
     
     //Now Push To UI to be created by the addStudToList function.
@@ -105,12 +107,13 @@ form.addEventListener('submit' , e => {
     //Add To Student List or LocalStorage
     Storage.loadStudent(newStudent);
     UI.showAlertBox('Student Added','success','&#10004');
+
+    // clearAllFields
+    UI.clearFormField()
   }
  
 });
-function date(){
-  return Date.now()
-}
+
 
 //Remove a Student From the List;
 tableList.addEventListener('click' , e => {
@@ -121,9 +124,7 @@ tableList.addEventListener('click' , e => {
 // Remove all items 
 button.addEventListener('click', _ => {
   localStorage.removeItem('students');
-  document.querySelectorAll('tr').forEach(item => {
-    item.remove();
-  })
+  document.querySelector('.table-list').remove()
 })
 
 //Display List On Content Load
